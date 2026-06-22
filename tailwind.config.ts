@@ -19,15 +19,16 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				display: ['Sora', 'sans-serif'],
-				sans: ['Space Grotesk', 'sans-serif'],
-				mono: ['JetBrains Mono', 'monospace'],
+				pixel: ['"Press Start 2P"', 'monospace'],
+				display: ['"Press Start 2P"', 'monospace'],
+				sans: ['VT323', 'monospace'],
+				mono: ['VT323', 'monospace'],
 			},
 			colors: {
-				neon: {
-					purple: 'hsl(var(--neon-purple))',
-					cyan: 'hsl(var(--neon-cyan))',
-					pink: 'hsl(var(--neon-pink))',
+				pixel: {
+					yellow: 'hsl(var(--pixel-yellow))',
+					black: 'hsl(var(--pixel-black))',
+					white: 'hsl(var(--pixel-white))',
 				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -95,22 +96,27 @@ export default {
 					'0%': { opacity: '0', transform: 'scale(0.95)' },
 					'100%': { opacity: '1', transform: 'scale(1)' }
 				},
-				'float': {
-					'0%, 100%': { transform: 'translateY(0)' },
-					'50%': { transform: 'translateY(-14px)' }
+				'blink': {
+					'0%, 49%': { opacity: '1' },
+					'50%, 100%': { opacity: '0' }
 				},
-				'pulse-glow': {
-					'0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
-					'50%': { opacity: '0.9', transform: 'scale(1.08)' }
+				'pixel-bounce': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'marquee': {
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(-50%)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.6s ease-out forwards',
-				'scale-in': 'scale-in 0.4s ease-out forwards',
-				'float': 'float 6s ease-in-out infinite',
-				'pulse-glow': 'pulse-glow 4s ease-in-out infinite'
+				'fade-in': 'fade-in 0.4s steps(4) forwards',
+				'scale-in': 'scale-in 0.3s steps(3) forwards',
+				'blink': 'blink 1s steps(1) infinite',
+				'pixel-bounce': 'pixel-bounce 1.2s steps(6) infinite',
+				'marquee': 'marquee 18s linear infinite'
 			}
 		}
 	},
