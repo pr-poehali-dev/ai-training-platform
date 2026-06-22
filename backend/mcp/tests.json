@@ -1,0 +1,36 @@
+{
+  "tests": [
+    {
+      "name": "MCP info",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {"protocol": "mcp"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "tools list",
+      "method": "POST",
+      "path": "/",
+      "body": {"jsonrpc": "2.0", "id": 1, "method": "tools/list"},
+      "expectedStatus": 200,
+      "expectedBody": {"jsonrpc": "2.0", "id": 1},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "generate notebook",
+      "method": "POST",
+      "path": "/",
+      "body": {"jsonrpc": "2.0", "id": 2, "method": "tools/call", "params": {"name": "generate_notebook", "arguments": {"name": "T", "task": "classification", "baseModel": "RandomForest", "epochs": 3}}},
+      "expectedStatus": 200,
+      "expectedBody": {"jsonrpc": "2.0", "id": 2},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}

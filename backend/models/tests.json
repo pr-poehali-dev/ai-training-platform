@@ -1,0 +1,27 @@
+{
+  "tests": [
+    {
+      "name": "List models",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {"models": []},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Create model",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "TEST-MODEL", "task": "classification", "baseModel": "RandomForest", "epochs": 5},
+      "expectedStatus": 200,
+      "expectedBody": {"name": "TEST-MODEL", "status": "created"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}
